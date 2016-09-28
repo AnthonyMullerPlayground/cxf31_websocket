@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cxf31_websocket</groupId>
+  <artifactId>cxf31_websocket</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>${java-version}</source>
+          <target>${java-version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+		<!-- add Atmosphere: for asynchronous call -->
+		<!-- https://mvnrepository.com/artifact/org.atmosphere/atmosphere-runtime -->
+		<dependency>
+			<groupId>org.atmosphere</groupId>
+			<artifactId>atmosphere-runtime</artifactId>
+			<version>${cxf.atmosphere.version}</version>
+			<scope>runtime</scope>
+		</dependency> 
+  
+  		<!-- add CXF WebSocket feature -->
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-websocket -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-websocket</artifactId>
+		    <version>${cxf-version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		  
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxrs -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		    <version>${cxf-version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-core</artifactId>
+		    <version>${cxf-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${spring-version}</version>
+		    <scope>runtime</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>${spring-version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring-version}</version>
+		    <scope>runtime</scope>
+		</dependency>
+  </dependencies>
+
+	<properties>
+		<java-version>1.8</java-version>
+		<spring-version>4.3.2.RELEASE</spring-version>
+		<cxf-version>3.1.7</cxf-version>
+		<cxf.atmosphere.version>2.3.7</cxf.atmosphere.version>
+	</properties>
+</project>
